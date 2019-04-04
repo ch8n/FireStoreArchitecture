@@ -1,6 +1,6 @@
 package dev.ch8n.firestoresample.ui.register
 
-import dev.ch8n.firestoresample.data.remote.firebase.source.firestore.user.models.User
+import dev.ch8n.firestoresample.data.models.User
 
 
 interface OnboardContract {

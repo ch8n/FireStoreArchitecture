@@ -2,7 +2,7 @@ package dev.ch8n.firestoresample.ui.register
 
 import dev.ch8n.firestoresample.R
 import dev.ch8n.firestoresample.base.BaseActivity
-import dev.ch8n.firestoresample.data.remote.firebase.source.firestore.user.models.User
+import dev.ch8n.firestoresample.data.models.User
 
 class OnboardActivity : BaseActivity(), OnboardContract.View {
 
@@ -34,6 +34,5 @@ class OnboardActivity : BaseActivity(), OnboardContract.View {
     override fun onSuccessUserData(user: User) {
         toast(user.toString())
     }
-
 
 }
