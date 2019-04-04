@@ -7,7 +7,7 @@ import dev.ch8n.firestoresample.data.remote.firebase.config.FirebaseManager
 
 class GlobalPostSource(firebaseManager: FirebaseManager) {
 
-    val realtime by lazy { firebaseManager.realtime.reference }
+    private val realtime by lazy { firebaseManager.realtime.reference }
 
     fun publishPost(post: Post): Task<Void> {
         val key = requireNotNull(realtime.child(FirebaseApi.Realtime.GLOBAL_POST).push().key)
