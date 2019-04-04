@@ -7,5 +7,6 @@ data class User(
     val username: String = "username",
     val email: String = "email",
     val photo: String? = null,
+    val postIds: List<String> = emptyList<String>(),
     @Exclude val uid: String = ""
 )
