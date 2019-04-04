@@ -9,9 +9,15 @@ class UserSource(private val firebaseManager: FirebaseManager) {
 
     private val firebaseStore by lazy { firebaseManager.firestore }
 
-    fun createUser(userId: String, user: User): Task<Void> =
-        firebaseStore.collection(FirebaseApi.FireStore.Collection.USERS)
-            .document("${FirebaseApi.FireStore.Documents.USER}$userId")
+    fun createUser(user: User): Task<Void> = firebaseStore
+        .collection(FirebaseApi.FireStore.Collection.USERS)
+        .document("${FirebaseApi.FireStore.Documents.USER}${user.uid}")
             .set(user)
+
+    fun getUser(uId: String) = firebaseStore
+        .collection(FirebaseApi.FireStore.Collection.USERS)
+        .document("${FirebaseApi.FireStore.Documents.USER}$uId")
+        .get()
+
 
 }

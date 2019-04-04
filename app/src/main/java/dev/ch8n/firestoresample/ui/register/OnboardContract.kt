@@ -6,20 +6,29 @@ import dev.ch8n.firestoresample.data.remote.firebase.source.firestore.user.model
 interface OnboardContract {
 
     interface View {
-        fun onSubmitUserDetails(user: User)
+        fun onSuccessUserCreated()
         fun onError(userMessage: String)
+        fun onSuccessUserData(user: User)
     }
 
     interface Controller {
         fun onStart()
+
+        fun createUser(user: User)
+        fun onSuccessUserCreated()
+
+        fun getUser(uId: String)
+        fun onSuccessUserData(user: User)
+
         fun onError(message: String)
         fun onStop()
-        fun onSuccessUserCreated()
+
     }
 
     interface Presenter {
         fun attach()
-        fun createUser(uId: String, user: User)
+        fun createUser(user: User)
+        fun getUser(uId: String)
         fun deattach()
     }
 }

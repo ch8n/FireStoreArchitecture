@@ -12,12 +12,28 @@ class OnboardActivity : BaseActivity(), OnboardContract.View {
 
     override fun setup() {
         controller = OnboardController(this)
+        controller.createUser(
+            User(
+                name = "Chetan",
+                username = "ch8n",
+                email = "chetan.garg36@gmail.com",
+                follows = emptyMap(),
+                followers = emptyMap(),
+                bio = "Yo yo chetu singh",
+                uid = "foo"
+            )
+        )
     }
 
     override fun onError(userMessage: String) = toast(userMessage)
 
-    override fun onSubmitUserDetails(user: User) {
-
+    override fun onSuccessUserCreated() {
+        controller.getUser("foo")
     }
+
+    override fun onSuccessUserData(user: User) {
+        toast(user.toString())
+    }
+
 
 }

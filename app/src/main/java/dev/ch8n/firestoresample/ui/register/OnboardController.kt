@@ -1,5 +1,8 @@
 package dev.ch8n.firestoresample.ui.register
 
+import android.util.Log
+import dev.ch8n.firestoresample.data.remote.firebase.source.firestore.user.models.User
+
 class OnboardController(private val view: OnboardContract.View) : OnboardContract.Controller {
 
     private val presenter: OnboardContract.Presenter = OnboardPresenter(this)
@@ -8,15 +11,23 @@ class OnboardController(private val view: OnboardContract.View) : OnboardContrac
         presenter.attach()
     }
 
-    override fun onError(message: String) {
+    override fun createUser(user: User) = presenter.createUser(user)
+    override fun onSuccessUserCreated() = view.onSuccessUserCreated()
 
+    override fun getUser(uId: String) = presenter.getUser(uId)
+    override fun onSuccessUserData(user: User) = view.onSuccessUserData(user)
+
+
+
+
+    override fun onError(message: String) {
+        Log.e("OnboadingController", message)
+        view.onError(message)
     }
 
     override fun onStop() {
         presenter.deattach()
     }
 
-    override fun onSuccessUserCreated() {
 
-    }
 }
