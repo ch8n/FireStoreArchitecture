@@ -2,6 +2,7 @@ package dev.ch8n.firestoresample.ui.register
 
 import dev.ch8n.firestoresample.R
 import dev.ch8n.firestoresample.base.BaseActivity
+import dev.ch8n.firestoresample.data.models.Post
 import dev.ch8n.firestoresample.data.models.User
 
 class OnboardActivity : BaseActivity(), OnboardContract.View {
@@ -17,9 +18,6 @@ class OnboardActivity : BaseActivity(), OnboardContract.View {
                 name = "Chetan",
                 username = "ch8n",
                 email = "chetan.garg36@gmail.com",
-                follows = emptyMap(),
-                followers = emptyMap(),
-                bio = "Yo yo chetu singh",
                 uid = "foo"
             )
         )
@@ -33,6 +31,16 @@ class OnboardActivity : BaseActivity(), OnboardContract.View {
 
     override fun onSuccessUserData(user: User) {
         toast(user.toString())
+        controller.uploadPost(
+            Post(
+                postId = "",
+                uid = "foo",
+                username = "Chetan",
+                imageUrl = "blabla",
+                caption = "this is awsome post"
+            )
+        )
+
     }
 
 }

@@ -4,7 +4,20 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 
-class FirebaseManager {
+class FirebaseManager private constructor() {
+
+    companion object {
+
+        @Volatile
+        private var instance: FirebaseManager? = null
+
+        fun getInstance() = instance ?: synchronized(this) {
+            instance ?: FirebaseManager().also { instance = it }
+        }
+
+    }
+
+
 
     var auth: FirebaseAuth = FirebaseAuth.getInstance()
         private set

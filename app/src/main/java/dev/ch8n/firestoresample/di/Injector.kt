@@ -6,9 +6,10 @@ import dev.ch8n.firestoresample.data.remote.firebase.source.realtime.global.post
 
 object Injector {
 
-    val firebaseManager: FirebaseManager = FirebaseManager()
+    val firebaseManager: FirebaseManager = FirebaseManager.getInstance()
 
-    val userSource: UserSource = UserSource(firebaseManager)
-    val globalPostSource: GlobalPostSource = GlobalPostSource(firebaseManager)
+    val userSource: UserSource = UserSource.getInstance(firebaseManager)
+
+    val globalPostSource: GlobalPostSource = GlobalPostSource.getInstance(firebaseManager)
 
 }

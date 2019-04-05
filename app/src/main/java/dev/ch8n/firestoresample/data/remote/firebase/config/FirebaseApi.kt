@@ -5,13 +5,13 @@ object FirebaseApi {
     object FireStore {
 
         object Collection {
-            const val USERS = "users"
-            const val GLOBAL_POST = "global_posts"
+            const val ALL_USERS = "all_users"
+            const val ALL_POST = "all_posts"
+            const val PROFILE = "profile"
         }
 
         object Documents {
-            const val USER = "user_"
-            const val GLOBAL_POST = "global_post"
+            const val USER = "user"
         }
 
     }

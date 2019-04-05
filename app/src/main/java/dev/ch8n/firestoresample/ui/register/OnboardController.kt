@@ -1,6 +1,7 @@
 package dev.ch8n.firestoresample.ui.register
 
 import android.util.Log
+import dev.ch8n.firestoresample.data.models.Post
 import dev.ch8n.firestoresample.data.models.User
 
 class OnboardController(private val view: OnboardContract.View) : OnboardContract.Controller {
@@ -18,6 +19,12 @@ class OnboardController(private val view: OnboardContract.View) : OnboardContrac
     override fun onSuccessUserData(user: User) = view.onSuccessUserData(user)
 
 
+    override fun uploadPost(post: Post) = presenter.uploadImageCouldnary(post)
+    override fun onImageUploadSuccess(post: Post) = presenter.publishPost(post)
+
+    override fun onPostPublishSuccess(post: Post) {
+
+    }
 
 
     override fun onError(message: String) {
