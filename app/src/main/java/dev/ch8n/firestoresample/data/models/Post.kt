@@ -4,6 +4,7 @@ import com.google.firebase.firestore.Exclude
 import java.util.*
 
 data class Post(
+    val postId: String = "",
     val uid: String = "",
     val username: String = "",
     val imageUrl: String = "",

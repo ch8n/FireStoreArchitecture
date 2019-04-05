@@ -9,11 +9,11 @@ class GlobalPostSource(firebaseManager: FirebaseManager) {
 
     private val realtime by lazy { firebaseManager.realtime.reference }
 
-    fun publishPost(post: Post): Task<Void> {
-        val key = requireNotNull(realtime.child(FirebaseApi.Realtime.GLOBAL_POST).push().key)
-        return realtime.child(FirebaseApi.Realtime.GLOBAL_POST).child(key).setValue(post)
-    }
+    fun getPushKey(): String = requireNotNull(realtime.child(FirebaseApi.Realtime.GLOBAL_POST).push().key)
 
+    fun publishPost(post: Post): Task<Void> {
+        return realtime.child(FirebaseApi.Realtime.GLOBAL_POST).child(post.postId).setValue(post)
+    }
 
 
 }
